@@ -21,3 +21,6 @@ jobs:
 
       - name: Run script
         run: python main.py
+      - env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
