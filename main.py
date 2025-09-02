@@ -145,7 +145,7 @@ class lhc:
         chat_id = os.getenv("TELEGRAM_CHAT_ID")
         super_chat_id = os.getenv("TELEGRAM_SUPER_CHAT_ID")
         r = requests.post(url=f'https://api.telegram.org/bot{bot}/sendMessage', json={'chat_id': chat_id, 'text': msg})
-        print(r.json())
+        
 if __name__ == '__main__':
     print('start runing')
     lhc = lhc()
@@ -160,3 +160,4 @@ if __name__ == '__main__':
 
 
   
+
