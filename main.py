@@ -143,7 +143,8 @@ class lhc:
     def send_msg(self, msg): 
         bot = os.getenv("BOT_TOKEN")
         chat_id = os.getenv("TELEGRAM_CHAT_ID")
-        r = requests.post(url=f'https://api.telegram.org/bot{bot}/sendMessage', json={'chat_id': chat_id,'migrate_to_chat_id':chat_id, 'text': msg})
+        super_chat_id =os.getenv('TELEGRAM_SUPER_CHAT_ID')
+        r = requests.post(url=f'https://api.telegram.org/bot{bot}/sendMessage', json={'chat_id': chat_id,'migrate_to_chat_id':super_chat_id, 'text': msg})
         print(r.json())
             
 if __name__ == '__main__':
@@ -160,4 +161,5 @@ if __name__ == '__main__':
     # print(results)
 
   
+
 
