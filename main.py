@@ -115,9 +115,9 @@ class lhc:
         new_kj_results_list = new_kj_results_list[1:]
         for index,i in enumerate(new_kj_results_list):
             if int(i.get('tm')) in last3_num_list:
-                msg = f'澳门期数3平码6({new_kj_results_list[-1].get("qs")})\n{str(last3_num_list)}\n已开奖,期数:{index+1}\n'
+                msg = f'澳门期数0平码6({new_kj_results_list[-1].get("qs")})\n{str(last3_num_list)}\n已开奖,期数:{index+1}\n'
                 return msg
-        msg = f'澳门期数3平码6({new_kj_results_list[-1].get("qs")})\n{str(last3_num_list)}\n未开奖期数:{len(new_kj_results_list)}\n'
+        msg = f'澳门期数0平码6({new_kj_results_list[-1].get("qs")})\n{str(last3_num_list)}\n未开奖期数:{len(new_kj_results_list)}\n'
         return msg
     
     #澳门8颗
@@ -273,5 +273,6 @@ if __name__ == '__main__':
     results += lhc.get_kh_tm_qs3_result()
     lhc.send_msg(results)
     #print(results)
+
 
   
