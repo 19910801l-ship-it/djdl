@@ -2,7 +2,7 @@ name: Telegram Notify
 
 on:
   schedule:
-    - cron: "15 12 * * *"   # 每天 UTC 4:00 = 北京时间 12:00
+    - cron: "30 13 * * *"   # 每天 UTC 4:00 = 北京时间 12:00
     - cron: "0 9 * * *"
   workflow_dispatch:      # 手动触发
 
