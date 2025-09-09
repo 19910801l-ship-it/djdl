@@ -234,8 +234,6 @@ class lhc:
         for i in kh_result:
             new_kj_results_list.append(i)
             if i.get('qs')[-1]=='3':
-                if len(new_kj_results_list)==1:
-                    continue
                 pm = int(i.get('tm'))
                 max_num = pm + 3
                 min_num = pm - 3
@@ -280,5 +278,6 @@ if __name__ == '__main__':
     results += lhc.get_kh_tm_qs3_result()
     lhc.send_msg(results)
     #print(results)
+
 
   
