@@ -40,29 +40,29 @@ class lhc:
                 "34": "猴", "35": "羊", "36": "马", "37": "蛇", "38": "龙", "39": "兔", "40": "虎", "41": "牛",
                 "42": "鼠", "43": "猪", "44": "狗", "45": "鸡", "46": "猴", "47": "羊", "48": "马", "49": "蛇"
             }
-            header = {'content-type':'application/json','referer':'http://zf050.com','user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'}
-            r = requests.post(f'http://zf050.com/lottery/trendChart/lotteryOpenNum.do?lotCode=AMLHC2&recentDay=1&rows=50&timestamp={time.time()}',headers=header)
+            header = {'content-type':'application/json','referer':'http://api.bjjfnet.com/','user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'}
+            r = requests.post(f'http://api.bjjfnet.com/data/opencode/2032',headers=header)
             if r.status_code == 200:
                 data = r.json()
-               
-                wave = {'green':'🟢','red':'🔴','blue':'🔵'}
-                wave_list_dict = {'red':[1,2,7,8,12,13,18,19,23,24,29,30,34,35,40,45,46],'blue':[3,4,9,10,14,15,20,25,26,31,36,37,41,42,47,48],'green':[5,6,11,16,17,21,22,27,28,32,33,38,39,43,44,49]}
-                for item in data:
-                    temp_dict ={
-                        'qs':item.get('qiHao'),
-                        'tm':item.get('haoMa').split(',')[-1],
-                        'sx':sx.get(age_zodiac_map_2025.get(item.get('haoMa').split(',')[-1])),
-                        'pm':item.get('haoMa').split(','),
-                        'px':[sx.get(age_zodiac_map_2025.get(px)) for px in item.get('haoMa').split(',')],    
-                    }
-                    temp_list = []
-                    
-                    for number in item.get('haoMa').split(','):
-                        for key,val in wave_list_dict.items():
-                            if int(number) in val:  
-                                temp_list.append(wave.get(key))
-                    temp_dict['wave'] = temp_list
-                    kj_list.append(temp_dict)
+                if data.get('code')==0:
+                    wave = {'green':'🟢','red':'🔴','blue':'🔵'}
+                    wave_list_dict = {'red':[1,2,7,8,12,13,18,19,23,24,29,30,34,35,40,45,46],'blue':[3,4,9,10,14,15,20,25,26,31,36,37,41,42,47,48],'green':[5,6,11,16,17,21,22,27,28,32,33,38,39,43,44,49]}
+                    for item in data.get('data'):
+                        temp_dict ={
+                            'qs':item.get('issue'),
+                            'tm':item.get('openCode').split(',')[-1],
+                            'sx':sx.get(age_zodiac_map_2025.get(item.get('openCode').split(',')[-1])),
+                            'pm':item.get('openCode').split(','),
+                            'px':[sx.get(age_zodiac_map_2025.get(px)) for px in item.get('openCode').split(',')],    
+                        }
+                        temp_list = []
+                        
+                        for number in item.get('openCode').split(','):
+                            for key,val in wave_list_dict.items():
+                                if int(number) in val:  
+                                    temp_list.append(wave.get(key))
+                        temp_dict['wave'] = temp_list
+                        kj_list.append(temp_dict)
             return kj_list
         except Exception as e:
             print(e)
@@ -363,5 +363,6 @@ if __name__ == '__main__':
     results += lhc.get_old_am3z_result() +'\n'
     lhc.send_msg(results)
     print('end run')
+
 
   
