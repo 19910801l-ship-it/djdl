@@ -72,7 +72,7 @@ class lhc:
     def get_kh_kj_list(self):
         try:
             header = {'content-type':'application/json','user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'}
-            r = requests.get('https://api.macaumarksix.com/history/hkjc/y/2025',headers=header)
+            r = requests.get('https://api.macaumarksix.com/history/hkjc/y/2026',headers=header)
             if r.status_code == 200:
                 data = r.json()
                 if data.get('code')==200:
@@ -395,3 +395,4 @@ if __name__ == '__main__':
 
 
   
+
