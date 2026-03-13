@@ -332,7 +332,7 @@ class lhc:
     
     #老澳门三组
     def get_old_am3z_result(self):
-        s3 = [['鼠','牛','雞','豬'],['龍','蛇','馬','羊'],['猴','狗','虎','兔']]
+        s3 = [['鼠','牛','鸡','猪'],['龙','蛇','马','羊'],['猴','狗','虎','兔']]
         kj_result = self.old_kj_list
         newqs = kj_result[0]
         msg = f'<b>老澳门三组</b> ({self.make_url(newqs.get("qs"),1)})\n'
@@ -395,4 +395,5 @@ if __name__ == '__main__':
 
 
   
+
 
